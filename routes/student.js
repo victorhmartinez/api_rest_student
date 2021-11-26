@@ -5,6 +5,7 @@ const studentsController= require('../controllers/studentsController')
 
 //Rutas get para obtner el grupo y un estudiante
 router.get('/students',studentsController.getGroupStudent);
+router.get('/students/filter',studentsController.getFilterStudent);
 router.get('/:pos',studentsController.getOneStudentGroup);
 //Rutas post para crear un estudian
 router.post('',studentsController.postStudent);

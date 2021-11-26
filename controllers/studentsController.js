@@ -24,8 +24,20 @@ const students =
 
 exports.getGroupStudent=(req,res)=>{
     //Devolvemos el listado de estudiantes
-     res.status(200).json(students)
+     res.status(200).json(resultado);
 }
+exports.getFilterStudent=(req, res) => {
+    const filters = req.query;
+    const filteredUsers = students.filter(user => {
+      let isValid = true;
+      for (key in filters) {
+        console.log(key, user[key], filters[key]);
+        isValid = isValid && user[key] == filters[key];
+      }
+      return isValid;
+    });
+    res.send(filteredUsers);
+  }
 
 exports.getOneStudentGroup=(req,res)=>{
     //Buscamos el estudiante segun la pos pasada por la url
